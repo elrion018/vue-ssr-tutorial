@@ -1,0 +1,23 @@
+{
+  "name": "vue-ssr-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elrion018/vue-ssr-tutorial.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elrion018/vue-ssr-tutorial/issues"
+  },
+  "homepage": "https://github.com/elrion018/vue-ssr-tutorial#readme",
+  "dependencies": {
+    "vue": "^2.6.12",
+    "vue-server-renderer": "^2.6.12"
+  }
+}
