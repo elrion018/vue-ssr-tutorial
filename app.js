@@ -1,6 +1,17 @@
 const server =require('express')()
 const Vue = require('vue')
-const renderer = require('vue-server-renderer').createRenderer()
+const renderer = require('vue-server-renderer').createRenderer({
+    template: require('fs').readFileSync('./index.template.html', 'utf-8')
+})
+
+const context = {
+    title: 'hello',
+    meta: `
+        <meta ...>
+        <meta ...>
+
+    `
+}
 
 server.get('*', (request, response) => {
     const app = new Vue({
@@ -12,19 +23,17 @@ server.get('*', (request, response) => {
 
     })
 
-    renderer.renderToString(app, (error, html) => {
+    renderer.renderToString(app, context,(error, html) => {
         if (error) {
-            throw error
+            response.status(500).end('Internal Server Error')
+            return
         }
 
-        response.end(`
-        <!DOCTYPE html>
-        <html>
-            <head><title>Hello</title></head>
-            <body>${html}</body>
-        </html>`)
+        response.end(html)
     } )
 })
 
 
-server.listen(8000)
+server.listen(8000,() => {
+    console.log('receive!')
+})
